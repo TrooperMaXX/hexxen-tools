@@ -22,7 +22,10 @@ Ein kleines Foundry Modul für HeXXen 1733. 🧙‍♀️
 - Autoroll Initiative
 - 'Ini 0' Eintrag in die Kampfübersicht hinzufügen
 
+![alt text](https://github.com/TrooperMaXX/hexxen-tools/blob/master/docs/Ini.png?raw=true)
+
 Alles ist individuell einstellbar, auch das 'Ini 0' Bild
+![alt text](https://github.com/TrooperMaXX/hexxen-tools/blob/master/docs/Settings.png?raw=true)
 
 ## Changelog
 ### Version 0.5
