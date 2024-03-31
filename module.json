@@ -1,24 +1,31 @@
 {
-  "id": "module",
-  "title": "New Module",
+  "id": "hexxen-tools",
+  "title": "Troopis HeXXen 1733 Tools",
   "description": "",
   "version": "#{VERSION}#",
   "library": "false",
   "manifestPlusVersion": "1.2.0",
   "compatibility": {
-    "minimum": 10,
-    "verified": 10,
+    "minimum": 11,
+    "verified": 11,
     "maximum": 11
   },
   "authors": [
     {
-      "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
+      "name": "TrooperMaXX",
+      "url": "https://github.com/TrooperMaXX",
+      "discord": "troopermaxx"
     }
   ],
   "relationships": {
-    "systems": [],
+    "systems": [{
+      "id": "hexxen-1733",
+      "type": "system",
+      "compatibility": {
+        "minimum": "1.2.0",
+        "verified": "1.4.0"
+      }
+    }],
     "requires": []
   },
   "esmodules": [
@@ -32,9 +39,9 @@
   ],
   "languages": [
     {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "languages/de.json"
     }
   ],
   "url": "#{URL}#",
@@ -45,7 +52,7 @@
   "media": [
     {
       "type": "icon",
-      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
+      "url": "https://avatars.githubusercontent.com/u/2643418?v=4"
     }
   ]
 }
