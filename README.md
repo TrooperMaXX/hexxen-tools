@@ -21,6 +21,7 @@ Ein kleines Foundry Modul für HeXXen 1733. 🧙‍♀️
 Übersicht der momentanen Funktionen:
 - Autoroll Initiative
 - 'Ini 0' Eintrag in die Kampfübersicht hinzufügen
+- Ideen & Coups nach einem Kampf automatisch wieder auffüllen
 
 ![alt text](https://github.com/TrooperMaXX/hexxen-tools/blob/master/docs/Ini.png?raw=true)
 
@@ -28,6 +29,9 @@ Alles ist individuell einstellbar, auch das 'Ini 0' Bild
 ![alt text](https://github.com/TrooperMaXX/hexxen-tools/blob/master/docs/Settings.png?raw=true)
 
 ## Changelog
+### Version 0.7
+- Ideen & Coups können jetzt nach dem Kampf wieder automatisch aufgefüllt werden
+
 ### Version 0.5
 - Autoroll Initiative
 - Ini 0' Eintrag in die Kampfübersicht hinzufügen

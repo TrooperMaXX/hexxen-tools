@@ -27,4 +27,12 @@ export default function registerSettings() {
     config: true,
   });
 
+  game.settings.register('hexxen-tools', 'reset-ideen-coups', {
+    name: "Automatisch nach einem Kampf Ideen & Coups auffüllen",
+    hint: "Sollen Ideen & Coups nach einem Kampf wieder automatisch aufgefüllt werden? ",
+    type: Boolean,
+    default: true,
+    scope: 'world',
+    config: true,
+  });
 }
