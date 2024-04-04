@@ -44,6 +44,20 @@ Hooks.on("preDeleteCombat", async function (combat) {
                 if (combatant.actor.system.resources.coups < combatant.actor.system.attributes.ATH.value + combatant.actor.system.temp["coup-bonus"]){
                     combatant.actor.system.resources.coups = combatant.actor.system.attributes.ATH.value + combatant.actor.system.temp["coup-bonus"];
                 }
+                combatant.actor.system.encounter.ap.remaining = combatant.actor.system.calc.ap;
+            }
+        }
+    }
+});
+
+Hooks.on("combatRound", async function (combat) {
+    console.log('hexxen-tools | Next Round');
+    if (game.user.isGM && game.settings.get('hexxen-tools', 'reset-aps')) {
+        for (let combatant of combat.turns) {
+            if(combatant.actor !== null && !combatant.actor.type.includes("npc") ){
+                if (combatant.actor.system.encounter.ap.remaining < combatant.actor.system.calc.ap){
+                    combatant.actor.system.encounter.ap.remaining = combatant.actor.system.calc.ap;
+                }
             }
         }
     } 

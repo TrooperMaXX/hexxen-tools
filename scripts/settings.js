@@ -35,4 +35,13 @@ export default function registerSettings() {
     scope: 'world',
     config: true,
   });
+
+  game.settings.register('hexxen-tools', 'reset-aps', {
+    name: "Automatisch zu Rundenanfang APs auffüllen",
+    hint: "Sollen APs der Jäger zu Rundenanfang wieder automatisch aufgefüllt werden? ",
+    type: Boolean,
+    default: true,
+    scope: 'world',
+    config: true,
+  });
 }
