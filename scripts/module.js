@@ -34,7 +34,7 @@ Hooks.once('init', async function() {
 });
 
 Hooks.once('ready', async function() {
-    console.log('hexxen-tools | Lasst die Scheuenen BRENNEN!!');
+    console.log('hexxen-tools | Lasst die Scheunen BRENNEN!!');
    // new itemCreator().render(true);
 });
 
