@@ -11,25 +11,24 @@ Hooks.once('init', async function() {
     CONFIG.ActiveEffect.documentClass = ActiveEffectHeXXen;
     CONFIG.statusEffects = registerHeXXenStatus();
     ActiveEffectHeXXen.registerHUDListeners();
-
-    libWrapper.register('hexxen-tools', 'HexxenActor.prototype._onUpdate', async function (wrapped,data, ...args) {
-        console.log('Actor.prototype._onUpdate');
+    libWrapper.register('hexxen-tools', 'HexxenActor.prototype._onUpdate', async function (wrapped,data,options, ...args) {
+        console.log('HexxenActor.prototype._onUpdate');
         // ... do things ...
-        let result = wrapped(...args);
-        console.log(result);
-        const level = foundry.utils.getProperty(data, "system.resources.odmg");
-       // if ( !Number.isFinite(level) ) return;
-        //let effect = this.effects.get(ActiveEffectHeXXen.ID.EXHAUSTION);
-        //if ( level < 1 ) return effect?.delete();
-        // if ( effect ) {
-       //   const originalExhaustion = foundry.utils.getProperty(options, "dnd5e.originalExhaustion");
-      //    return effect.update({ "flags.dnd5e.exhaustionLevel": level }, { dnd5e: { originalExhaustion } });
-       // } else {
-         let effect = await ActiveEffect.implementation.fromStatusEffect("aeussererSchaden", { parent: this });
-          effect.updateSource({ "flags.hexxen.odmg": level });
-          return ActiveEffect.implementation.create(effect, { parent: this, keepId: true });
-       // }
+        
+        let level = foundry.utils.getProperty(data, "system.resources.odmg");
+        if ( !Number.isFinite(level) ) level = 1;
+        let effect = this.effects.get(ActiveEffectHeXXen.ID.ODMG);
+        if ( level < 1 ) return effect?.delete();
+          if ( effect ) {
+            return effect.update({ "flags.hexxen-tools.odmg": level });
+          } else {
+                effect = await ActiveEffect.implementation.fromStatusEffect("auessererSchaden", { parent: this });
+                effect.updateSource({ "flags.hexxen-tools.odmg": level });
+                return ActiveEffect.implementation.create(effect, { parent: this, keepId: true });
+            }
+        // let result = wrapped(...args);
     }, 'MIXED' /* optional, since this is the default type */ );
+
 
 });
 

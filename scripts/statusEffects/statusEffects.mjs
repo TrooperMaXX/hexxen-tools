@@ -46,7 +46,8 @@ export function registerHeXXenStatus() {
   //================================
   function _aeussererSchaden() {
 	return {
-	  id: `aeussererSchaden`,
+	  id: `auessererSchaden`,
+	  _id: `hexxen1733odmg00`,
 	  name: `Äußerer Schaden`,
 	  label: `Äußerer Schaden` ,
 	  img: `modules/hexxen-tools/img/status/small-fire.svg`,
