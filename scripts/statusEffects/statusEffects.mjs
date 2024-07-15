@@ -1,28 +1,9 @@
 export function registerHeXXenStatus() {
 	return [
 	  _aeussererSchaden(),
-
-//  _innererSchaden(1),
-//  _innererSchaden(2),
-//  _innererSchaden(3),
-//  _innererSchaden(4),
-//  _innererSchaden(5),
-//
-//  _malusStufe(1),
-//  _malusStufe(2),
-//  _malusStufe(3),
-//  _malusStufe(4),
-//  _malusStufe(5),
-//
-//  _laehmungsStufe(1),
-//  _laehmungsStufe(2),
-//  _laehmungsStufe(3),
-//  _laehmungsStufe(4),
-//  _laehmungsStufe(5),
-//
-	  
-  
-	  _dead(),
+	  _innererSchaden(),
+      _malusStufe(),
+      _laehmungsStufe(),
 	]
   }
   
@@ -55,55 +36,37 @@ export function registerHeXXenStatus() {
 	  changes: []
 	}
   }
-  function _innererSchaden(stack) {
+  function _innererSchaden() {
 	return {
-	  id: `innererSchaden${stack}`,
-	  name: `Innerer Schaden ${stack}`,
-	  label: `Innerer Schaden ${stack}`,
+	  id: `innererSchaden`,
+	  _id: `hexxen1733idmg00`,
+	  name: `Innerer Schaden `,
+	  label: `Innerer Schaden `,
 	  img: `modules/hexxen-tools/img/status/poison-bottle.svg`,
 	  description: `In [INI-O] 2 <b>Schmerzschaden</b> pro Stufe </br><b>Abbau:</b> Unempfindlichkeit / <b>Helfen:</b> Erste Hilfe`,
-	  changes: [
-		{
-			key: "system.resources.idmg",
-			mode: 3,
-			priority: undefined,
-			value: `${stack}`
-		}
-	  ]
+	  changes: []
 	}
   }
   function _laehmungsStufe(stack) {
 	return {
-	  id: `laehmungsStufe${stack}`,
-	  name: `Lähmungs Stufe ${stack}`,
-	  label: `Lähmungs Stufe ${stack}`,
+	  id: `laehmungsStufe`,
+	  _id: `hexxen1733ldmg00`,
+	  name: `Lähmungs Stufe `,
+	  label: `Lähmungs Stufe `,
 	  img: `modules/hexxen-tools/img/status/light-thorny-triskelion.svg`,
 	  description: `-1 Malus pro Stufe </br><b>Abbau:</b> Geistesstärke / <b>Helfen:</b> Redekunst`,
-	  changes: [
-		{
-			key: "system.resources.ldmg",
-			mode: 3,
-			priority: undefined,
-			value: `${stack}`
-		}
-	  ]
+	  changes: []
 	}
   }
   function _malusStufe(stack) {
 	return {
-	  id: `malusStufe${stack}`,
-	  name: `Malus Stufe ${stack}`,
-	  label: `Malus Stufe ${stack}`,
+	  id: `malusStufe`,
+	  _id: `hexxen1733mdmg00`,
+	  name: `Malus Stufe `,
+	  label: `Malus Stufe `,
 	  img: `modules/hexxen-tools/img/status/terror.svg`,
 	  description: `-1 Malus pro Stufe </br><b>Abbau:</b> Geistesstärke / <b>Helfen:</b> Redekunst`,
-	  changes: [
-		{
-		  key: "system.resources.mdmg",
-		  mode: 3,
-		  priority: undefined,
-		  value: `${stack}`
-		}
-	  ]
+	  changes: []
 	}
   }
   

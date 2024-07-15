@@ -3,7 +3,7 @@ import itemCreator from "./itemCreator.js";
 import { registerHeXXenStatus } from "./statusEffects/statusEffects.mjs";
 
 import { default as ActiveEffectHeXXen } from "./statusEffects/active-effect.mjs";
-import { flattenObj } from "./utils/utils.mjs";
+import { _onUpdateODMG,_onUpdateIDMG, _onUpdateLDMG, _onUpdateMDMG } from "./utils/utils.mjs";
 
 Hooks.once('init', async function() {
     console.log('hexxen-tools | init');
@@ -11,21 +11,17 @@ Hooks.once('init', async function() {
     CONFIG.ActiveEffect.documentClass = ActiveEffectHeXXen;
     CONFIG.statusEffects = registerHeXXenStatus();
     ActiveEffectHeXXen.registerHUDListeners();
-    libWrapper.register('hexxen-tools', 'HexxenActor.prototype._onUpdate', async function (wrapped,data,options, ...args) {
+    libWrapper.register('hexxen-tools', 'HexxenActor.prototype._onUpdate', async function (wrapped,data,options,userId, ...args) {
         console.log('HexxenActor.prototype._onUpdate');
         // ... do things ...
-        
-        let level = foundry.utils.getProperty(data, "system.resources.odmg");
-        if ( !Number.isFinite(level) ) level = 1;
-        let effect = this.effects.get(ActiveEffectHeXXen.ID.ODMG);
-        if ( level < 1 ) return effect?.delete();
-          if ( effect ) {
-            return effect.update({ "flags.hexxen-tools.odmg": level });
-          } else {
-                effect = await ActiveEffect.implementation.fromStatusEffect("auessererSchaden", { parent: this });
-                effect.updateSource({ "flags.hexxen-tools.odmg": level });
-                return ActiveEffect.implementation.create(effect, { parent: this, keepId: true });
-            }
+        if ( userId === game.userId ) {
+            console.log(data);
+            if (foundry.utils.hasProperty(data, "system.resources.odmg")) _onUpdateODMG(this,data);
+            if (foundry.utils.hasProperty(data, "system.resources.idmg")) _onUpdateIDMG(this,data);
+            if (foundry.utils.hasProperty(data, "system.resources.ldmg")) _onUpdateLDMG(this,data);
+            if (foundry.utils.hasProperty(data, "system.resources.mdmg")) _onUpdateMDMG(this,data);
+           
+        }
         // let result = wrapped(...args);
     }, 'MIXED' /* optional, since this is the default type */ );
 
