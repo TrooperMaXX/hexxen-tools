@@ -4,6 +4,7 @@ export function registerHeXXenStatus() {
 	  _innererSchaden(),
       _malusStufe(),
       _laehmungsStufe(),
+	  _dead(),
 	]
   }
   
