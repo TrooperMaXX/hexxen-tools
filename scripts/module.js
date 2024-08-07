@@ -6,10 +6,12 @@ import { _onUpdateODMG,_onUpdateIDMG, _onUpdateLDMG, _onUpdateMDMG } from "./uti
 
 Hooks.once('init', async function() {
     console.log('hexxen-tools | init');
+
     registerSettings();
     CONFIG.ActiveEffect.documentClass = ActiveEffectHeXXen;
     CONFIG.statusEffects = registerHeXXenStatus();
     ActiveEffectHeXXen.registerHUDListeners();
+
     if ( game.release.generation < 12 ) Math.clamp = Math.clamped;
     libWrapper.register('hexxen-tools', 'HexxenActor.prototype._onUpdate', async function (wrapped,data,options,userId, ...args) {
         console.log('hexxen-tools | HexxenActor.prototype._onUpdate');
@@ -34,14 +36,15 @@ Hooks.once('ready', async function() {
         ui.notifications.error("Troopis HeXXenTools braucht das 'libWrapper' Modul. Bitte installiere und aktiviere es.");
 
     console.log('hexxen-tools | Lasst die Scheunen BRENNEN!!');
-   // new itemCreator().render(true);
 });
 
 Hooks.on("combatStart", async function (combat) {
     console.log('hexxen-tools | Combat Started');
+
     if (game.user.isGM && game.settings.get('hexxen-tools', 'auto-roll-ini')) {
         combat.rollAll();
     }
+
     if (game.user.isGM && game.settings.get('hexxen-tools', 'add-ini-0')) {
         const combatants = combat.setupTurns();
         if (!combatants.find((element) => element.name === 'Ini 0')){
@@ -64,32 +67,26 @@ Hooks.on("preDeleteCombat", async function (combat) {
     if (game.user.isGM && game.settings.get('hexxen-tools', 'reset-ideen-coups')) {
         for (let combatant of combat.turns) {
             if(combatant.actor !== null && !combatant.actor.type.includes("npc") ){
+                let updateDataIdee, updateDataCoup, updateDataAP = {};
+
                 if (combatant.actor.system.resources.ideen < combatant.actor.system.attributes.WIS.value + combatant.actor.system.temp["idee-bonus"]){
-                  //  let ideenCalc = combatant.actor.system.attributes.WIS.value + combatant.actor.system.temp["idee-bonus"];
-					let updateDataIdee = {
-					  "combatant.actor.system.resources.ideen": combatant.actor.system.attributes.WIS.value + combatant.actor.system.temp["idee-bonus"],
-					};
-                    
-                    // console.log(updateDataIdee);
-                    try {
-                        combatant.actor.update(updateDataIdee);
-                    } catch (error) {
-                        console.log(error);
-                    }
-                        
-                    // console.log(combatant.actor);
+					updateDataIdee = {
+					  "system.resources.ideen": combatant.actor.system.attributes.WIS.value + combatant.actor.system.temp["idee-bonus"],
+					};                    
                 }
+                
                 if (combatant.actor.system.resources.coups < combatant.actor.system.attributes.ATH.value + combatant.actor.system.temp["coup-bonus"]){
-                   //  let coupsCalc = combatant.actor.system.attributes.ATH.value + combatant.actor.system.temp["coup-bonus"];
-                    let updateData = {
-					  "combatant.actor.system.resources.coups": combatant.actor.system.attributes.ATH.value + combatant.actor.system.temp["coup-bonus"],
+                    updateDataCoup = {
+					  "system.resources.coups": combatant.actor.system.attributes.ATH.value + combatant.actor.system.temp["coup-bonus"],
 					};
-					combatant.actor.update(updateData);
 				}
-				let updateData = {
+
+				updateDataAP = {
 					  "system.encounter.ap.remaining": combatant.actor.system.calc.ap,
 					};
-				combatant.actor.update(updateData);
+                
+                const combinedSettings = { ...updateDataIdee, ...updateDataCoup, ...updateDataAP };
+                combatant.actor.update(combinedSettings);
 			}
         }
     }
