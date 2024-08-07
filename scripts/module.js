@@ -12,11 +12,10 @@ Hooks.once('init', async function() {
     ActiveEffectHeXXen.registerHUDListeners();
     if ( game.release.generation < 12 ) Math.clamp = Math.clamped;
     libWrapper.register('hexxen-tools', 'HexxenActor.prototype._onUpdate', async function (wrapped,data,options,userId, ...args) {
-        console.log('HexxenActor.prototype._onUpdate');
-        
+        console.log('hexxen-tools | HexxenActor.prototype._onUpdate');
         
         if ( userId === game.userId ) {
-            console.log(data);
+           
             if (foundry.utils.hasProperty(data, "system.resources.odmg")) _onUpdateODMG(this,data);
             if (foundry.utils.hasProperty(data, "system.resources.idmg")) _onUpdateIDMG(this,data);
             if (foundry.utils.hasProperty(data, "system.resources.ldmg")) _onUpdateLDMG(this,data);
@@ -24,7 +23,7 @@ Hooks.once('init', async function() {
            
         }
         let result = wrapped(data,options,userId, ...args);
-        console.log(result);
+        return result;
     }, 'MIXED' /* optional, since this is the default type */ );
 
 
@@ -71,14 +70,14 @@ Hooks.on("preDeleteCombat", async function (combat) {
 					  "combatant.actor.system.resources.ideen": combatant.actor.system.attributes.WIS.value + combatant.actor.system.temp["idee-bonus"],
 					};
                     
-                console.log(updateDataIdee);
-                try {
-                    combatant.actor.update(updateDataIdee);
-                } catch (error) {
-                    console.log(error);
-                }
-					
-                    console.log(combatant.actor);
+                    // console.log(updateDataIdee);
+                    try {
+                        combatant.actor.update(updateDataIdee);
+                    } catch (error) {
+                        console.log(error);
+                    }
+                        
+                    // console.log(combatant.actor);
                 }
                 if (combatant.actor.system.resources.coups < combatant.actor.system.attributes.ATH.value + combatant.actor.system.temp["coup-bonus"]){
                    //  let coupsCalc = combatant.actor.system.attributes.ATH.value + combatant.actor.system.temp["coup-bonus"];
