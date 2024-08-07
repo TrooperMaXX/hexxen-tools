@@ -1,5 +1,4 @@
 import registerSettings from "./settings.js";
-// import itemCreator from "./itemCreator.js";
 import { registerHeXXenStatus } from "./statusEffects/statusEffects.mjs";
 
 import { default as ActiveEffectHeXXen } from "./statusEffects/active-effect.mjs";
@@ -14,7 +13,7 @@ Hooks.once('init', async function() {
     if ( game.release.generation < 12 ) Math.clamp = Math.clamped;
     libWrapper.register('hexxen-tools', 'HexxenActor.prototype._onUpdate', async function (wrapped,data,options,userId, ...args) {
         console.log('HexxenActor.prototype._onUpdate');
-        // ... do things ...
+        
         
         if ( userId === game.userId ) {
             console.log(data);
