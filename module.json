@@ -2,7 +2,7 @@
   "id": "hexxen-tools",
   "title": "Troopis HeXXen 1733 Tools",
   "description": "",
-  "version": "0.8",
+  "version": "#{VERSION}#",
   "library": "false",
   "manifestPlusVersion": "1.2.0",
   "compatibility": {
@@ -23,10 +23,19 @@
       "type": "system",
       "compatibility": {
         "minimum": "1.2.0",
-        "verified": "1.4.0"
+        "verified": "1.6.0"
       }
     }],
-    "requires": []
+    "requires": [
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "compatibility": {
+            "minimum": "1.0.0.0",
+            "verified": "1.12.14.0"
+        }
+    }
+    ]
   },
   "esmodules": [
     "scripts/module.js"

@@ -1,5 +1,5 @@
 import registerSettings from "./settings.js";
-import itemCreator from "./itemCreator.js";
+// import itemCreator from "./itemCreator.js";
 import { registerHeXXenStatus } from "./statusEffects/statusEffects.mjs";
 
 import { default as ActiveEffectHeXXen } from "./statusEffects/active-effect.mjs";
@@ -11,9 +11,11 @@ Hooks.once('init', async function() {
     CONFIG.ActiveEffect.documentClass = ActiveEffectHeXXen;
     CONFIG.statusEffects = registerHeXXenStatus();
     ActiveEffectHeXXen.registerHUDListeners();
+    if ( game.release.generation < 12 ) Math.clamp = Math.clamped;
     libWrapper.register('hexxen-tools', 'HexxenActor.prototype._onUpdate', async function (wrapped,data,options,userId, ...args) {
         console.log('HexxenActor.prototype._onUpdate');
         // ... do things ...
+        
         if ( userId === game.userId ) {
             console.log(data);
             if (foundry.utils.hasProperty(data, "system.resources.odmg")) _onUpdateODMG(this,data);
@@ -22,61 +24,21 @@ Hooks.once('init', async function() {
             if (foundry.utils.hasProperty(data, "system.resources.mdmg")) _onUpdateMDMG(this,data);
            
         }
-        // let result = wrapped(...args);
+        let result = wrapped(data,options,userId, ...args);
+        console.log(result);
     }, 'MIXED' /* optional, since this is the default type */ );
 
 
 });
 
 Hooks.once('ready', async function() {
+    if(!game.modules.get('lib-wrapper')?.active && game.user.isGM)
+        ui.notifications.error("Troopis HeXXenTools braucht das 'libWrapper' Modul. Bitte installiere und aktiviere es.");
+
     console.log('hexxen-tools | Lasst die Scheunen BRENNEN!!');
    // new itemCreator().render(true);
 });
 
-// Hooks.on('updateActor', (actor, change, options, userId) => {
-//    console.log('hexxen-tools | updateActor');
-//    console.log(actor);
-//    let flattenedChange = flattenObj(change);
-//    console.log(flattenedChange);
-//    if ("system.resources.odmg" in flattenedChange){
-//        console.log(actor.temporaryEffects);
-//    
-//        
-//        if (flattenedChange["system.resources.odmg"] == 0 )
-//        {
-//            actor.toggleStatusEffect(`aeussererSchaden1`);
-//        }else{
-//            actor.toggleStatusEffect(`aeussererSchaden${flattenedChange["system.resources.odmg"]-1}`,{ active: false,overlay: false });
-//            actor.toggleStatusEffect(`aeussererSchaden${flattenedChange["system.resources.odmg"]}`);
-//            actor.toggleStatusEffect(`aeussererSchaden${flattenedChange["system.resources.odmg"]+1}`,{ active: false,overlay: false });
-//        } 
-//        
-//    }
-//    if ("system.resources.idmg" in flattenedChange){
-//        console.log(flattenedChange["system.resources.idmg"]);
-//    }
-//    if ("system.resources.mdmg" in flattenedChange){
-//        console.log(flattenedChange["system.resources.mdmg"]);
-//    }
-//    if ("system.resources.ldmg" in flattenedChange){
-//        console.log(flattenedChange["system.resources.ldmg"]);
-//    }
-//    
-//    
-// });
-//Hooks.on("renderItemDirectory", (app, html, options) => {
-//    if ( !game.user.isGM ) return;
-//    console.log('hexxen-tools | RENDER');
-//    // Add Approval Tracker button
-//    const header = html.find(".header-actions");
-//    const button = document.createElement("button");
-//    button.classList.add("create-hexxen-item");
-//    button.type = "button";
-//    button.innerHTML = `<i class="fa-solid fa-scale-balanced"></i>Troopis HeXXen Tool`;
-//    button.onclick = event => new itemCreator().render(true);
-//    header.append(button);
-//  });
-//
 Hooks.on("combatStart", async function (combat) {
     console.log('hexxen-tools | Combat Started');
     if (game.user.isGM && game.settings.get('hexxen-tools', 'auto-roll-ini')) {

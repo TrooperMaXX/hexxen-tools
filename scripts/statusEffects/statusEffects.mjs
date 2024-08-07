@@ -32,6 +32,7 @@ export function registerHeXXenStatus() {
 	  name: `Äußerer Schaden`,
 	  label: `Äußerer Schaden` ,
 	  img: `modules/hexxen-tools/img/status/small-fire.svg`,
+	  icon: `modules/hexxen-tools/img/status/small-fire.svg`,
 	  description: `In [INI-O] 2 <b>Schmerzschaden</b> pro Stufe </br> <b>Abbau:</b> Unempfindlichkeit / <b>Helfen:</b> Erste Hilfe`,
 	  changes: []
 	}
@@ -43,6 +44,7 @@ export function registerHeXXenStatus() {
 	  name: `Innerer Schaden `,
 	  label: `Innerer Schaden `,
 	  img: `modules/hexxen-tools/img/status/poison-bottle.svg`,
+	  icon: `modules/hexxen-tools/img/status/poison-bottle.svg`,
 	  description: `In [INI-O] 2 <b>Schmerzschaden</b> pro Stufe </br><b>Abbau:</b> Unempfindlichkeit / <b>Helfen:</b> Erste Hilfe`,
 	  changes: []
 	}
@@ -54,6 +56,7 @@ export function registerHeXXenStatus() {
 	  name: `Lähmungs Stufe `,
 	  label: `Lähmungs Stufe `,
 	  img: `modules/hexxen-tools/img/status/light-thorny-triskelion.svg`,
+	  icon: `modules/hexxen-tools/img/status/light-thorny-triskelion.svg`,
 	  description: `-1 Malus pro Stufe </br><b>Abbau:</b> Geistesstärke / <b>Helfen:</b> Redekunst`,
 	  changes: []
 	}
@@ -65,6 +68,7 @@ export function registerHeXXenStatus() {
 	  name: `Malus Stufe `,
 	  label: `Malus Stufe `,
 	  img: `modules/hexxen-tools/img/status/terror.svg`,
+	  icon: `modules/hexxen-tools/img/status/terror.svg`,
 	  description: `-1 Malus pro Stufe </br><b>Abbau:</b> Geistesstärke / <b>Helfen:</b> Redekunst`,
 	  changes: []
 	}

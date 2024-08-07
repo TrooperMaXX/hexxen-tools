@@ -46,7 +46,7 @@ export default class ItemCreator extends HandlebarsApplicationMixin(ApplicationV
   /** @inheritDoc 
   get title() {
     console.log("Hey Alex");
-    return `My Module: PENIS`;
+    return `My Module: *****`;
   }*/
 
   /* -------------------------------------------- */

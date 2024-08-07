@@ -1,7 +1,7 @@
 <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
 	<title>small-fire-svg</title>
 	<style>
-		.s0 { fill: #000000 } 
+		.s0 { fill: #FFFFFF } 
 		.s1 { fill: #ff0000;stroke: #0b550d;stroke-linecap: round;stroke-linejoin: bevel;stroke-width: 10 } 
 	</style>
 	<g id="Layer">
