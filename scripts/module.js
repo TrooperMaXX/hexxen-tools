@@ -6,27 +6,30 @@ import { _onUpdateODMG,_onUpdateIDMG, _onUpdateLDMG, _onUpdateMDMG } from "./uti
 
 Hooks.once('init', async function() {
     console.log('hexxen-tools | init');
-
     registerSettings();
-    CONFIG.ActiveEffect.documentClass = ActiveEffectHeXXen;
-    CONFIG.statusEffects = registerHeXXenStatus();
-    ActiveEffectHeXXen.registerHUDListeners();
+  
+    if (game.settings.get('hexxen-tools', 'replace-status-effects')) {
+        if ( game.release.generation < 12 ) Math.clamp = Math.clamped;
+        CONFIG.ActiveEffect.documentClass = ActiveEffectHeXXen;
+        CONFIG.statusEffects = registerHeXXenStatus();
+        ActiveEffectHeXXen.registerHUDListeners();
 
-    if ( game.release.generation < 12 ) Math.clamp = Math.clamped;
-    libWrapper.register('hexxen-tools', 'HexxenActor.prototype._onUpdate', async function (wrapped,data,options,userId, ...args) {
-        console.log('hexxen-tools | HexxenActor.prototype._onUpdate');
-        
-        if ( userId === game.userId ) {
-           
-            if (foundry.utils.hasProperty(data, "system.resources.odmg")) _onUpdateODMG(this,data);
-            if (foundry.utils.hasProperty(data, "system.resources.idmg")) _onUpdateIDMG(this,data);
-            if (foundry.utils.hasProperty(data, "system.resources.ldmg")) _onUpdateLDMG(this,data);
-            if (foundry.utils.hasProperty(data, "system.resources.mdmg")) _onUpdateMDMG(this,data);
-           
-        }
-        let result = wrapped(data,options,userId, ...args);
-        return result;
-    }, 'MIXED' /* optional, since this is the default type */ );
+        libWrapper.register('hexxen-tools', 'HexxenActor.prototype._onUpdate', async function (wrapped,data,options,userId, ...args) {
+            console.log('hexxen-tools | HexxenActor.prototype._onUpdate');
+            
+            if ( userId === game.userId ) {
+               
+                if (foundry.utils.hasProperty(data, "system.resources.odmg")) _onUpdateODMG(this,data);
+                if (foundry.utils.hasProperty(data, "system.resources.idmg")) _onUpdateIDMG(this,data);
+                if (foundry.utils.hasProperty(data, "system.resources.ldmg")) _onUpdateLDMG(this,data);
+                if (foundry.utils.hasProperty(data, "system.resources.mdmg")) _onUpdateMDMG(this,data);
+               
+            }
+            let result = wrapped(data,options,userId, ...args);
+            return result;
+        }, 'MIXED' /* optional, since this is the default type */ );
+    }
+    
 
 
 });

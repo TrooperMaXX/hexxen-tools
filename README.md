@@ -1,5 +1,6 @@
 ![](https://img.shields.io/badge/Foundry-v11-informational)
-![](https://img.shields.io/badge/HeXXen_1733_Module-v1.4-confirmed)
+![](https://img.shields.io/badge/Foundry-v12-informational)
+![](https://img.shields.io/badge/HeXXen_1733_Module-v1.6-confirmed)
 ![Latest Release Download Count](https://img.shields.io/github/downloads/troopermaxx/hexxen-tools/latest/module.zip)
 
 
@@ -19,20 +20,28 @@
 Ein kleines Foundry Modul für HeXXen 1733. 🧙‍♀️
 
 Übersicht der momentanen Funktionen:
+- Zustände (Äußerer/Innerer Schaden und Lähmungs/Malus Stufen) können PCs und NPCs per TOKENHUD zugewiesen werden
 - Autoroll Initiative
 - 'Ini 0' Eintrag in die Kampfübersicht hinzufügen
 - APs werden bei jeder Kampf-Runde und am ende vom Kampf wieder aufgefüllt
-- Zustände (Äußerer/Innerer Schaden und Lähmungs/Malus Stufen) können PCs und NPCs per TOKENHUD zugewiesen werden
-- ~~Ideen & Coups nach einem Kampf automatisch wieder auffüllen ~~ momentan nur sehr umständlich möglich siehe 
+- Ideen & Coups & AP nach einem Kampf automatisch wieder auffüllen 
 
+### Zustände übers TOKENHUD managen
+![Zustände übers TOKENHUD managen](https://github.com/TrooperMaXX/hexxen-tools/blob/master/docs/Zustaende_Demo.gif?raw=true)<br>_(Icons der Zustände sind von [Game-icons.net](https://game-icons.net/) und sind unter der [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) lizensiert.)_
+### Ini 0 in der Kampfübersicht
 ![Ini 0 in der Kampfübersicht](https://github.com/TrooperMaXX/hexxen-tools/blob/master/docs/Ini.png?raw=true)
 
 Alles ist individuell einstellbar, auch das 'Ini 0' Bild
 ![Einstellungsmöglichkeiten](https://github.com/TrooperMaXX/hexxen-tools/blob/master/docs/Settings.png?raw=true)
 
-<br>_(Icons der Zustände sind von [Game-icons.net](https://game-icons.net/) und sind unter der [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) lizensiert.)_
+
 
 ## Changelog
+### Version 0.9
+- Zustände können übers TokenHUD Menü bei Jägern und NSCs hinzugefügt werden
+- BugFix: APs, Ideen & Coups am ende einses kamüpfes können nun wieder automatisch aufgefüllt werden
+
+
 ### Version 0.7
 - Ideen & Coups können jetzt nach dem Kampf wieder automatisch aufgefüllt werden
 
