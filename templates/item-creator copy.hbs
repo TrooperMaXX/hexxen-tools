@@ -1,0 +1,21 @@
+<div class="standard-form">
+    <fieldset>
+        <legend>Test2</legend>
+        {{formField fields.name value=source.name rootId=partId disabled=true}}
+        {{formField fields.avatar value=source.avatar rootId=partId}}
+        {{formField fields.color value=source.color rootId=partId}}
+        {{formField fields.pronouns value=source.pronouns rootId=partId}}
+    </fieldset>
+
+    <fieldset>
+        <legend>Test2</legend>
+        {{formField fields.character value=source.character rootId=partId widget=characterWidget}}
+    </fieldset>
+
+    <footer class="form-footer">
+        <button type="submit">
+            <i class="fas fa-save"></i>
+            <label>Save</label>
+        </button>
+    </footer>
+</div>
