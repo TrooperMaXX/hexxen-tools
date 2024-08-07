@@ -18,6 +18,7 @@ export function registerHeXXenStatus() {
 	  name: "Dead",
 	  label: "Dead",
 	  img: "modules/hexxen-tools/img/status/death-skull.svg",
+	  icon: "modules/hexxen-tools/img/status/death-skull.svg",
 	  description: "Du bist Tod.",
 	  changes: []
 	}
@@ -74,104 +75,4 @@ export function registerHeXXenStatus() {
 	  changes: []
 	}
   }
-  
-  //================================
-  //          OVERLAPPING          =
-  //================================
-  
- 
-  
-  //================================
-  //         NON-STACKING          =
-  //================================
-  //**
-// function _petrified() {
-//	return {
-//	  id: "petrified",
-//	  name: "Petrified",
-//	  label: "Petrified",
-//	  icon: "systems/dc20rpg/images/statuses/petrified.svg",
-//	  description: "You and your mundane belongings are turned into stone and you are no longer aware of your surroundings. You become 10 times heavier and have <b>Resistance (Half)</b> to all damage. <br><br>Any <b>Poisons</b> or <b>Diseases</b> already affecting you are suspended and you are immune to any additional <b>Poison</b> and <b>Disease</b> while <b>Petrified</b>. <br><br>You are also <b>Paralyzed</b> (<b>Attack Checks</b> made from within 1 Space that Hit you are considered <b>Critical Hits</b>), <b>Stunned</b> (automatically fail <b>Agility</b>, <b>Might</b> and <b>Physical Saves</b>), <b>Exposed</b>(<b>Attack Checks</b> against you have ADV), and <b>Incapacitated</b> (You can not Speak, Concentrate, or spend Action Points).",
-//	  changes: [
-//		{
-//		  key: "system.damageReduction.damageTypes.corrosion.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.cold.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.fire.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.radiant.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.lightning.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.poison.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.psychic.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.sonic.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.sonic.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.umbral.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.piercing.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.slashing.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		},
-//		{
-//		  key: "system.damageReduction.damageTypes.bludgeoning.resistance",
-//		  mode: 5,
-//		  priority: undefined,
-//		  value: "true"
-//		}
-//	  ]
-//	}
-// }
  
