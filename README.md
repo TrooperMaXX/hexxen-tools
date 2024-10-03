@@ -38,6 +38,9 @@ Alles ist individuell einstellbar, auch das 'Ini 0' Bild
 
 ## Changelog
 ### Version 0.9
+- fixed [#11](/../../issues/11)
+
+### Version 0.9
 - Zustände können übers TokenHUD Menü bei Jägern und NSCs hinzugefügt werden
 - BugFix: APs, Ideen & Coups am ende einses kamüpfes können nun wieder automatisch aufgefüllt werden
 
